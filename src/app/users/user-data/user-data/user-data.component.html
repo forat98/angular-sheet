@@ -1,0 +1,41 @@
+<section class="section-one">
+  <div class="container d-flex justify-content-center">
+
+    <!-- <table class="table table-hover">
+      <thead></thead>
+      <tbody>
+        <tr *ngFor="let total of totalHours | keyvalue">
+          <td>{{ total.value }}</td>
+          <td>{{ total.key }}</td>
+        </tr>
+      </tbody>
+    </table> -->
+
+
+
+    <div id="cards_landscape_wrap-2">
+      <div class="container">
+          <div class="row">
+
+                  <a href="">
+                      <div class="card-flyer">
+                          <div class="text-box">
+                              <div class="image-box">
+                                  <img src="/assets/images/logo.jpg" alt="" />
+                              </div>
+                              <div class="text-container" *ngFor="let total of totalHours | keyvalue" >
+                                  <div>  {{ total.key }}  {{ total.value }}</div>
+                              </div>
+                          </div>
+                      </div>
+                  </a>
+
+
+          </div>
+      </div>
+  </div>
+  </div>
+  <button class="home-button" routerLink="/">Home</button>
+</section>
+       <!-- Topic Cards -->
+

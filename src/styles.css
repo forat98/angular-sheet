@@ -1,1 +1,184 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
+  url(src\assets\images\home.jpg);
+  color: white;
+  font: 87.5%/1.5em "Open Sans", sans-serif;
+  margin: 0;
+}
+
+p {
+  line-height: 1.5em;
+}
+
+after {
+  clear: both;
+}
+
+.login {
+  margin: 50px auto;
+  width: 320px;
+}
+
+.login form {
+  margin: auto;
+  padding: 22px 22px 22px 22px;
+  width: 100%;
+  border-radius: 5px;
+  background: #838b9338;
+  border: 3px solid #9e591b;
+}
+
+.login form span {
+  background-color: #363b41;
+  border-radius: 3px 0px 0px 3px;
+  border-right: 3px solid #434a52;
+  color: #606468;
+  display: block;
+  float: left;
+  line-height: 50px;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+}
+
+.login form input[type="email"] {
+  background-color: #ffffff;
+  border-radius: 0px 3px 3px 0px;
+  color: #a9a9a9;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 90%;
+  height: 50px;
+}
+
+.login form input[type="password"] {
+  background-color: #ffffff;
+  border-radius: 0px 3px 3px 0px;
+  color: #a9a9a9;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 90%;
+  height: 50px;
+}
+
+.login form input[type="submit"] {
+  background: #a45819;
+  border: 0;
+  width: 100%;
+  height: 40px;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+#login form input[type="submit"]:hover {
+  background: #a45819;
+}
+
+.section-one {
+
+  background-size: cover;
+  background-position: center;
+  filter: brightness();
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-button {
+  background: hsl(0, 100%, 100%, 0.2);
+  outline: none;
+}
+
+.home-button:hover,
+.home-button:focus {
+  background: hsl(0, 100%, 100%, 0.2);
+  outline: none;
+}
+
+.content h1 {
+  font-size: 2.75rem;
+}
+
+.content p {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.section-one {
+
+  background-size: cover;
+  background-position: center;
+  filter: brightness();
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+  color: white;
+}
+
+h1 {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 4rem;
+  font-weight: 400;
+}
+
+p {
+  font-size: 1.15rem;
+  letter-spacing: 3px;
+  margin: 20px 0 40px;
+}
+
+.home-button {
+  color: white;
+  text-decoration: none;
+  border: 2px white solid;
+  padding: 10px 15px;
+}
+
+.home-button:hover,
+.home-button:focus {
+  background: hsl(0, 100%, 100%, 0.2);
+  outline: none;
+}
+
+.content h1 {
+  font-size: 2.75rem;
+}
+
+.content h1::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 5px;
+  background: #d1a370;
+}
+
+
+.clock {
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  color: #ffffff;
+  font-size: 60px;
+  font-family: cursive;
+  letter-spacing: 7px;
+}

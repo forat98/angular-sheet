@@ -1,0 +1,37 @@
+<section class="section-one">
+  <div class="container">
+    <h1>Shishalicious-Oakville</h1>
+    <p>SIGN IN in Shishalicious-Oakville</p>
+    <h2>Register</h2>
+    <form
+      class="row d-flex justify-content-center"
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="col-4">
+        <div class="form-group mt-2">
+          <input type="text" formControlName="firstName"
+          placeholder="fullName" class="form-control" />
+        </div>
+        <div class="form-group mt-2">
+          <input type="text" formControlName="username"             placeholder="username"
+          class="form-control" />
+        </div>
+        <div class="form-group mt-2">
+          <input
+            type="password"
+            formControlName="password"
+            class="form-control"
+            placeholder="Password"
+          />
+        </div>
+      </div>
+      <div class="form-group mt-2">
+        <button class="btn btn-primary ">Register</button>
+        <button class="btn btn-primary" routerLink="/">Home</button>
+
+      </div>
+    </form>
+  </div>
+
+</section>
