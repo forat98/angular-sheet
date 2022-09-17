@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DBConfig, NgxIndexedDBModule } from 'ngx-indexed-db';
 import { CommonModule } from '@angular/common';
 import { UserDataComponent } from './users/user-data/user-data/user-data.component';
+
 const dbConfig: DBConfig  = {
   name: 'MyDb',
   version: 1,
@@ -18,22 +19,30 @@ const dbConfig: DBConfig  = {
     storeConfig: { keyPath: 'id', autoIncrement: true },
     storeSchema: [
       { name: 'name', keypath: 'name', options: { unique: false } },
-      { name: 'email', keypath: 'email', options: { unique: true } }
+      { name: 'password', keypath: 'password', options: { unique: true } },
+      { name: 'hoursPrice', keypath: 'hoursPrice', options: { unique: false } }
     ]
   },{
     store: 'timeSheet',
     storeConfig: { keyPath: 'id', autoIncrement: true },
     storeSchema: [
-      { name: 'startDate', keypath: 'name', options: { unique: false } },
-      { name: 'EndDate', keypath: 'name', options: { unique: false } },
-      { name: 'email', keypath: 'email', options: { unique: true } }
+      { name: 'Date', keypath: 'Date', options: { unique: false } },
+      { name: 'startDate', keypath: 'startDate', options: { unique: false } },
+      { name: 'endDate', keypath: 'endDate', options: { unique: false } },
+      { name: 'totalHours', keypath: 'totalHours', options: { unique: false } },
+      { name: 'totalPrice', keypath: 'totalPrice', options: { unique: false } },
+      { name: 'userId', keypath: 'userId', options: { unique: false } },
     ]
   }
   ,{
-    store:'timeSheetTotal',
+    store:'timeSheetTotalWeekly',
     storeConfig: { keyPath: 'id', autoIncrement: true },
     storeSchema: [
-      { name: 'totalHours', keypath: 'name', options: { unique: false } },
+      { name: 'userId', keypath: 'userId', options: { unique: false } },
+      { name: 'totalHours', keypath: 'totalHours', options: { unique: false } },
+      { name: 'totalPrice', keypath: 'totalPrice', options: { unique: false } },
+
+
     ]
   }]
 };
@@ -44,8 +53,8 @@ const dbConfig: DBConfig  = {
     LoginComponent,
     UsersComponent,
     RegisterComponent,
-    UserDataComponent
-  ],
+    UserDataComponent,
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,

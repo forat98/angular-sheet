@@ -1,7 +1,9 @@
 body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
-  url(src\assets\images\home.jpg);
+    url(src\assets\images\home.jpg);
+    background-size: 100% 100%;
   color: white;
+  background-repeat: no-repeat;
   font: 87.5%/1.5em "Open Sans", sans-serif;
   margin: 0;
 }
@@ -76,7 +78,6 @@ after {
 }
 
 .section-one {
-
   background-size: cover;
   background-position: center;
   filter: brightness();
@@ -108,7 +109,6 @@ after {
   letter-spacing: 2px;
 }
 
-
 * {
   margin: 0;
   padding: 0;
@@ -116,7 +116,6 @@ after {
 }
 
 .section-one {
-
   background-size: cover;
   background-position: center;
   filter: brightness();
@@ -171,10 +170,9 @@ p {
   background: #d1a370;
 }
 
-
 .clock {
   position: absolute;
-  top: 33%;
+  top: 25%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   color: #ffffff;

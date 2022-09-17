@@ -20,21 +20,27 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.logInForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
-
   onLogin() {
     this.dbService.getAll('people').subscribe((res) => {
       res.find((obj: any) => {
-        if (obj['email'] == this.logInForm.value['username'] == true) {
+        if(obj.name==this.logInForm.value['username'] && this.logInForm.value['username']!=='admin'){
+           this.router.navigateByUrl(`User/${obj.id}`);
+        };
+        if(this.logInForm.value['username'] === 'admin'){
           this.router.navigateByUrl('/Users');
         }
+        if (obj['name'] == this.logInForm.value['username'] == true) {
+        }
+
         else
           this.notLogIn = true;
 
       })
     })
+
+
   }
 
 }

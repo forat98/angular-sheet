@@ -1,41 +1,48 @@
+<h1>Shishalicious-Oakville</h1>
 <section class="section-one">
   <div class="container d-flex justify-content-center">
-
-    <!-- <table class="table table-hover">
-      <thead></thead>
+    <table
+      class="table table-hover"
+      style="overflow: auto; background: white; width: 50%"
+    >
+      <thead>
+        <tr>
+          <th>
+            <button
+              (click)="getDatOfWeek()"
+              class="btn btn-info d-flex align-end"
+            >
+              Start new week
+            </button>
+            nameDate
+          </th>
+          <th>StartTime</th>
+          <th>EndTime</th>
+          <th>total</th>
+        </tr>
+      </thead>
       <tbody>
-        <tr *ngFor="let total of totalHours | keyvalue">
-          <td>{{ total.value }}</td>
-          <td>{{ total.key }}</td>
+        <tr *ngFor="let item of results; let i = index">
+          <td>{{ item.Date | date:"YYYY-MM-dd" }}</td>
+          <td>
+            {{ item.startDate | date: "shortTime" }}
+            <button (click)="getSartTime(item)" class="btn btn-info">in</button>
+          </td>
+          <td>
+            {{ item.endDate | date: "shortTime" }}
+            <button (click)="getEndTime(item)" class="btn btn-info">out</button>
+          </td>
+          <td>{{ item.totalHours }}</td>
         </tr>
       </tbody>
-    </table> -->
-
-
-
-    <div id="cards_landscape_wrap-2">
-      <div class="container">
-          <div class="row">
-
-                  <a href="">
-                      <div class="card-flyer">
-                          <div class="text-box">
-                              <div class="image-box">
-                                  <img src="/assets/images/logo.jpg" alt="" />
-                              </div>
-                              <div class="text-container" *ngFor="let total of totalHours | keyvalue" >
-                                  <div>  {{ total.key }}  {{ total.value }}</div>
-                              </div>
-                          </div>
-                      </div>
-                  </a>
-
-
-          </div>
+      <button class="btn btn-success mt-2" (click)="getAllHouers()">
+        getAllHouers
+      </button>
+      <div class="mt-2 ">
+        <p>totalHoursInweek : {{ totalHoursInweek }}</p>
+        <p>totalHoursPrice : {{ totalHoursPrice }}</p>
       </div>
-  </div>
+    </table>
   </div>
   <button class="home-button" routerLink="/">Home</button>
 </section>
-       <!-- Topic Cards -->
-

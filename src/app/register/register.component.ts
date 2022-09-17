@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
+import { TimeSheet } from '../users/user-data/user-data/user-data.component';
 
 @Component({
   selector: 'app-register',
@@ -21,9 +22,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
       username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, ]],
+      hoursPrice: ['', [Validators.required, ]],
     });
   }
 
@@ -32,34 +33,16 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     this.dbService
       .add('people', {
-        name: this.registerForm.value['firstName'],
-        email: this.registerForm.value['username'],
-        pw: this.registerForm.value['password'],
-        Date: new Date().toLocaleDateString("en-US"),
-        startTime: new Date().toLocaleTimeString("en-US"),
+        name: this.registerForm.value['username'],
+        password: this.registerForm.value['password'],
+        hoursPrice: this.registerForm.value['hoursPrice'],
+
+
       }).subscribe((key) => {
         console.log('key: ', key);
       });
 
-    this.setTimeSheet();
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/logIn');
   }
-  setTimeSheet() {
-    this.dbService
-      .add('timeSheet', {
-        email: this.registerForm.value['username'],
-        Date: new Date().toLocaleDateString("en-US"),
-        startTime: new Date().toLocaleTimeString("en-US"),
-        endTime: '',
-      }).subscribe((key) => {
-      });
 
-    this.dbService
-      .add('timeSheetTotal', {
-        name: this.registerForm.value['firstName'],
-        email: this.registerForm.value['username'],
-        totalHours: ''
-      }).subscribe((key) => {
-      });
-  }
 }

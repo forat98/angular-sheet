@@ -1,54 +1,34 @@
-
-    <h1>Shishalicious-Oakville</h1>
-
+<h1>Shishalicious-Oakville</h1>
 <section class="section-one">
   <div class="container d-flex justify-content-center">
-    <table class="table table-hover">
+    <table
+      class="table table-hover"
+      style="overflow: auto; background: white; width: 50%"
+    >
       <thead>
         <tr>
           <th>name</th>
-          <th>Date</th>
-          <th>StartDate</th>
-
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of user">
           <td>{{ item.name }}</td>
-          <td>{{ item.Date }}</td>
-          <td>{{ item.startTime }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>EndDtae</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let time of timeSheet">
-          <td>{{ time.endTime }}</td>
           <td>
-            <button class="btn btn-danger m-2" (click)="setTimeEnd(time.id)">
-              out
-            </button>
-            <button class="btn btn-info m-2" (click)="viweUser(time.id)">
+            <button class="btn btn-info m-2" (click)="viweUser(item.id)">
               view
             </button>
-            <button class="btn btn-dark m-2" (click)="DeledtUser(time.id)">
+
+            <button class="btn btn-danger m-2" *ngIf="item.name !='admin'" (click)="DeledtUser(item.id)">
               Delete
             </button>
-
           </td>
+
+
         </tr>
       </tbody>
     </table>
-
-
   </div>
-
 
   <button class="home-button" routerLink="/">Home</button>
 </section>
