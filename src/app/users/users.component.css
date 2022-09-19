@@ -2,7 +2,16 @@ table thead {
   background: #4e6a79;
   color: white;
 }
-tbody{
+tbody {
   background-color: white;
 }
 
+form {
+  background: unset;
+  width: 34%;
+  height: unset;
+  margin: unset;
+  padding: unset;
+  border-radius: unset;
+  border: unset;
+}

@@ -8,9 +8,10 @@ export interface TimeSheet {
   startDate: Date | string,
   endDate: Date | string,
   userId: number,
-  totalHours: string ,
-  totalPrice:string
+  totalHours: string,
+  totalPrice: string
 }
+
 @Component({
   selector: 'app-user-data',
   templateUrl: './user-data.component.html',
@@ -25,9 +26,9 @@ export class UserDataComponent implements OnInit {
   startTime: any;
   EndTime: any;
   totalHour: any;
-  nameUser!:string;
+  nameUser!: string;
   counter: number = 0;
-  enableButton!: string|number;
+  enableButton!: string | number;
   totalHoursPrice = 0;
   AllTimeSheetsPerWeek: TimeSheet[] = [];
   constructor(private dbService: NgxIndexedDBService,
@@ -36,7 +37,6 @@ export class UserDataComponent implements OnInit {
   ngOnInit() {
     const date = moment()
     this.enableButton = date.format("YYYY-MM-DD")
-
     this.route.params.subscribe(params => {
       this.userID = params['id'];
       this.getUser(this.userID)
@@ -44,9 +44,9 @@ export class UserDataComponent implements OnInit {
         console.log(res);
         if (res)
           this.results = (res as TimeSheet[]).filter(x => x.userId == this.userID);
-          let startDate = new Date("2022-09-17");
-          let endDate = new Date("2022-09-24");
-        this.AllTimeSheetsPerWeek =  (res as TimeSheet[]).filter(x => x.Date <= endDate && x.Date >= startDate)
+        let startDate = new Date("2022-09-17");
+        let endDate = new Date("2022-09-24");
+        this.AllTimeSheetsPerWeek = (res as TimeSheet[]).filter(x => x.Date >= startDate && x.Date <= endDate)
         console.log("AllTimeSheetsPerWeek:", this.AllTimeSheetsPerWeek)
         console.log("results: ", this.results);
       })
@@ -57,7 +57,7 @@ export class UserDataComponent implements OnInit {
   getUser(id: any) {
     this.dbService.getByID('people', Number(id)).subscribe((res) => {
       this.user = res;
-console.log("user:", this.user)
+      console.log("user:", this.user)
     });
 
   }
@@ -66,7 +66,7 @@ console.log("user:", this.user)
   getDatOfWeek() {
     const fromDate = moment();
     const toDate = moment().add(6, 'days');
-    console.log (fromDate,toDate);
+    console.log(fromDate, toDate);
     const enumerateDaysBetweenDates = (startDate: any, endDate: any) => {
       console.log(startDate, endDate);
       let foundDates = [];
@@ -98,6 +98,7 @@ console.log("user:", this.user)
         console.log(this.results);
       })
     })
+
   }
 
 
@@ -114,8 +115,8 @@ console.log("user:", this.user)
   getEndTime(item: TimeSheet) {
     if (!item.endDate) {
       item.endDate = new Date()
-      let diff = this.getDataDiff( item , new Date(item.startDate), new Date(item.endDate))
-      item.totalHours =  (diff.hour + (diff.minute/60)).toFixed(2)
+      let diff = this.getDataDiff(item, new Date(item.startDate), new Date(item.endDate))
+      item.totalHours = (diff.hour + (diff.minute / 60)).toFixed(2)
       item.totalPrice = (Number(item.totalHours) * Number(this.user.hoursPrice)).toFixed(2)
       this.dbService
         .update('timeSheet', item)
@@ -124,40 +125,25 @@ console.log("user:", this.user)
     }
   }
 
-  diff_hours(end: any, startTime: any, item: TimeSheet) {
-    const start = moment(startTime, "HH:mm a");
-    const ende = moment(end, "HH:mm a");
-    const duration = moment.duration(ende.diff(startTime));
-    console.log(duration)
-    const hours = (duration.asHours());
-    const minutes = (duration.asMinutes());
-    this.totalHour = Math.floor(duration.asHours()) + ':' +
-      Math.floor(duration.minutes());
-    console.log("this.totalHour",this.totalHour)
 
-
-
+  getDataDiff(item: TimeSheet, startDate: Date, endDate: Date) {
+    var diff = endDate.getTime() - startDate.getTime();
+    var days = Math.floor(diff / (60 * 60 * 24 * 1000));
+    var hours = Math.floor(diff / (60 * 60 * 1000)) - (days * 24);
+    var minutes = Math.floor(diff / (60 * 1000)) - ((days * 24 * 60) + (hours * 60));
+    var seconds = Math.floor(diff / 1000) - ((days * 24 * 60 * 60) + (hours * 60 * 60) + (minutes * 60));
+    return { hour: hours, minute: minutes, second: seconds };
   }
 
-
-
-
-getDataDiff(item:TimeSheet,startDate:Date, endDate:Date) {
-  var diff = endDate.getTime() - startDate.getTime();
-  var days = Math.floor(diff / (60 * 60 * 24 * 1000));
-  var hours = Math.floor(diff / (60 * 60 * 1000)) - (days * 24);
-  var minutes = Math.floor(diff / (60 * 1000)) - ((days * 24 * 60) + (hours * 60));
-  return {  hour: hours, minute: minutes };
-}
-
   getAllHouers() {
-   this.results.forEach((result) => {
-    this.totalHoursInweek += Number(result.totalHours);
-    this.totalHoursPrice += Number(result.totalPrice);
-   })
+    this.totalHoursInweek = 0;
+    this.totalHoursPrice = 0;
+    this.results.forEach((result) => {
+      this.totalHoursInweek += Number(result.totalHours);
+      this.totalHoursPrice += Number(result.totalPrice);
+    })
 
-
-      }
+  }
 
 
 

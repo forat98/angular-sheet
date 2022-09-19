@@ -22,8 +22,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', [Validators.required, ]],
-      hoursPrice: ['', [Validators.required, ]],
+      password: ['', [Validators.required]],
+      hoursPrice: ['', [Validators.required]],
     });
   }
 
@@ -35,7 +35,8 @@ export class RegisterComponent implements OnInit {
         name: this.registerForm.value['username'],
         password: this.registerForm.value['password'],
         hoursPrice: this.registerForm.value['hoursPrice'],
-
+        totalPricePerWeek:0.00,
+        totalHoursPerWeek:0.00
 
       }).subscribe((key) => {
         console.log('key: ', key);

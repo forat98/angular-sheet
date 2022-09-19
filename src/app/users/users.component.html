@@ -1,34 +1,77 @@
-<h1>Shishalicious-Oakville</h1>
-<section class="section-one">
-  <div class="container d-flex justify-content-center">
+<section class="section-one" id="tableData">
+  <form
+    class="form-horizontal"
+    class="row d-flex justify-content-center"
+    [formGroup]="adminForm"
+  >
+    <div class="col">
+      <div class="form-group mt-2">
+        <input
+          type="date"
+          formControlName="startDate"
+          placeholder="startDate"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group mt-2">
+        <input
+          type="date"
+          formControlName="endDate"
+          placeholder="endDate"
+          class="form-control"
+          (input)="CalculteTotlas()"
+        />
+      </div>
+    </div>
+  </form>
+
+  <div class="container d-flex justify-content-center mt-2">
     <table
+      id="table"
       class="table table-hover"
       style="overflow: auto; background: white; width: 80%"
     >
       <thead>
         <tr>
           <th>name</th>
+          <th>hoursPrice</th>
+          <th>TotalPrice</th>
+          <th>totalHours</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of user">
           <td>{{ item.name }}</td>
+          <th>{{ item.hoursPrice }}</th>
+
+          <td>{{ item.totalPricePerWeek }}</td>
+          <td>{{ item.totalHoursPerWeek }}</td>
           <td>
-            <button class="btn btn-info m-2" (click)="viweUser(item.id,item.name)">
+            <button
+              class="btn btn-info m-2"
+              (click)="viweUser(item.id, item.name)"
+            >
               view
             </button>
 
-            <button class="btn btn-danger m-2" *ngIf="item.name !='admin'" (click)="DeledtUser(item.id)">
+            <button class="btn btn-danger m-2" (click)="DeledtUser(item.id)">
               Delete
             </button>
+            <button
+              class="btn btn-success m-2"
+              routerLink="/admin"
+              *ngIf="item.name == 'admin'"
+            >
+              calculatTotal
+            </button>
           </td>
-
-
         </tr>
       </tbody>
     </table>
   </div>
-
-  <button class="home-button" routerLink="/">Home</button>
+  <div>
+    <button class="btn btn-danger m-2" (click)="Delete()">DeleteWeek</button>
+    <button (click)="download()" class="btn btn-primary m-2">Download PDF</button>
+  </div>
 </section>

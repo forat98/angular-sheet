@@ -21,6 +21,7 @@
     "bootstrap": "^5.2.1",
     "jquery": "^3.6.1",
     "jquery-datepicker": "^1.12.3",
+    "jspdf": "^2.5.1",
     "moment": "^2.29.4",
     "ngx-indexed-db": "^11.0.2",
     "rxjs": "~7.5.0",

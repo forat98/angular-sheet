@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 import { UserDataComponent } from './users/user-data/user-data/user-data.component';
 import { AdminComponent } from './users/admin/admin.component';
 
-const dbConfig: DBConfig  = {
+const dbConfig: DBConfig = {
   name: 'MyDb',
   version: 1,
   objectStoresMeta: [{
@@ -21,9 +21,11 @@ const dbConfig: DBConfig  = {
     storeSchema: [
       { name: 'name', keypath: 'name', options: { unique: false } },
       { name: 'password', keypath: 'password', options: { unique: true } },
-      { name: 'hoursPrice', keypath: 'hoursPrice', options: { unique: false } }
+      { name: 'hoursPrice', keypath: 'hoursPrice', options: { unique: false } },
+      { name: 'totalPricePerWeek', keypath: 'totalPricePerWeek', options: { unique: false } },
+      { name: 'totalHoursPerWeek', keypath: 'totalHoursPerWeek', options: { unique: false } }
     ]
-  },{
+  }, {
     store: 'timeSheet',
     storeConfig: { keyPath: 'id', autoIncrement: true },
     storeSchema: [
@@ -33,17 +35,6 @@ const dbConfig: DBConfig  = {
       { name: 'totalHours', keypath: 'totalHours', options: { unique: false } },
       { name: 'totalPrice', keypath: 'totalPrice', options: { unique: false } },
       { name: 'userId', keypath: 'userId', options: { unique: false } },
-    ]
-  }
-  ,{
-    store:'timeSheetTotalWeekly',
-    storeConfig: { keyPath: 'id', autoIncrement: true },
-    storeSchema: [
-      { name: 'userId', keypath: 'userId', options: { unique: false } },
-      { name: 'totalHours', keypath: 'totalHours', options: { unique: false } },
-      { name: 'totalPrice', keypath: 'totalPrice', options: { unique: false } },
-
-
     ]
   }]
 };
@@ -57,7 +48,7 @@ const dbConfig: DBConfig  = {
     UserDataComponent,
     AdminComponent
 
-   ],
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

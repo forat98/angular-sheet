@@ -29,23 +29,23 @@ export class AdminComponent implements OnInit {
     console.log(this.adminForm)
     this.dbService.getAll("timeSheet").subscribe(res => {
       console.log(res);
-      let startDate =new Date( this.adminForm.value['startDate']);
-      let endDate  =new Date( this.adminForm.value['endDate'])
+      let startDate = new Date(this.adminForm.value['startDate']);
+      let endDate = new Date(this.adminForm.value['endDate'])
       this.AllTimeSheetsPerWeek = (res as TimeSheet[]).filter(x => x.Date <= endDate && x.Date >= startDate)
       console.log("AllTimeSheetsPerWeek:", this.AllTimeSheetsPerWeek)
-this. getAllHouers();
+      this.getAllHouers();
     })
 
   }
 
   getAllHouers() {
     this.AllTimeSheetsPerWeek.forEach((result) => {
-      console.log(result);
-     this.Total_Hours_For_All_UserInweek += Number(result.totalHours);
-     this.Total_Hours_Price_For_All_UserInweek += Number(result.totalPrice);
+      this.Total_Hours_For_All_UserInweek += Number(result.totalHours);
+      this.Total_Hours_Price_For_All_UserInweek += Number(result.totalPrice);
     })
+    this.Total_Hours_For_All_UserInweek.toFixed(2)
 
 
-       }
+  }
 
 }

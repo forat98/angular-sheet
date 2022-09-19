@@ -43,7 +43,7 @@
             <button (click)="getEndTime(item)" class="btn btn-info">out</button>
           </td>
           <td>{{ item.totalHours }}</td>
-          <td>{{ item.totalPrice }} $</td>
+          <td>{{ item.totalPrice  | currency :'CAD' }} </td>
         </tr>
       </tbody>
       <button *ngIf="results.length " class="btn btn-success mt-2" (click)="getAllHouers()">
@@ -51,7 +51,7 @@
       </button>
       <div class="mt-2" *ngIf="results.length ">
         <p>totalHoursInweek : {{ totalHoursInweek }}</p>
-        <p>totalHoursPrice : {{ totalHoursPrice }} $</p>
+        <p>totalHoursPrice : {{ totalHoursPrice | currency  :'CAD':'symbol':'1.2-2' }} </p>
       </div>
     </table>
   </div>
