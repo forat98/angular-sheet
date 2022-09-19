@@ -20,16 +20,14 @@ export class UserDataComponent implements OnInit {
   results: TimeSheet[] = [];
   totalHoursInweek: number = 0;
   user: any;
-  sum: number[]=[];
-  timeSheet: any = []
-  saveData: any = [];
   date: any;
   userID: any;
   startTime: any;
   EndTime: any;
   totalHour: any;
+  nameUser!:string;
   counter: number = 0;
-  enableButton: any;
+  enableButton!: string|number;
   totalHoursPrice = 0;
   AllTimeSheetsPerWeek: TimeSheet[] = [];
   constructor(private dbService: NgxIndexedDBService,
@@ -58,8 +56,8 @@ export class UserDataComponent implements OnInit {
 
   getUser(id: any) {
     this.dbService.getByID('people', Number(id)).subscribe((res) => {
-      console.log(res);
       this.user = res;
+console.log("user:", this.user)
     });
 
   }
@@ -67,7 +65,7 @@ export class UserDataComponent implements OnInit {
 
   getDatOfWeek() {
     const fromDate = moment();
-    const toDate = moment().add(7, 'days');
+    const toDate = moment().add(6, 'days');
     console.log (fromDate,toDate);
     const enumerateDaysBetweenDates = (startDate: any, endDate: any) => {
       console.log(startDate, endDate);

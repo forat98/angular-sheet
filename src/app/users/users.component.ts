@@ -40,8 +40,13 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  viweUser(id: any) {
-    this.router.navigateByUrl(`User/${id}`);
+  viweUser(id: any, name: string) {
+    console.log(name);
+    if (name == 'admin') {
+      this.router.navigateByUrl('/admin');
+    }
+    else
+      this.router.navigateByUrl(`User/${id}`);
   }
 
 }

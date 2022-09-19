@@ -1,15 +1,24 @@
-<h1>Shishalicious-Oakville</h1>
 <section class="section-one">
+
+  <div class="card" *ngFor="let item of user | keyvalue" >
+    <div class="card-body" *ngIf="item.key === 'name'">
+      <h4 class="card-title">{{ item.key }}</h4>
+      <p class="card-text">{{ item.value }}</p>
+    </div>
+  </div>
+
+
   <div class="container d-flex justify-content-center">
     <table
       class="table table-hover"
-      style="overflow: auto; background: white; width: 50%"
+      style="overflow: auto; background: white; width: 100%"
     >
       <thead>
         <tr>
           <th>
             <button
               (click)="getDatOfWeek()"
+              *ngIf="results.length === 0"
               class="btn btn-info d-flex align-end"
             >
               Start new week
@@ -18,12 +27,13 @@
           </th>
           <th>StartTime</th>
           <th>EndTime</th>
-          <th>total</th>
+          <th>totalHours</th>
+          <th>totalPrice</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of results; let i = index">
-          <td>{{ item.Date | date:"YYYY-MM-dd" }}</td>
+          <td>{{ item.Date | date: "YYYY-MM-dd" }}</td>
           <td>
             {{ item.startDate | date: "shortTime" }}
             <button (click)="getSartTime(item)" class="btn btn-info">in</button>
@@ -33,14 +43,15 @@
             <button (click)="getEndTime(item)" class="btn btn-info">out</button>
           </td>
           <td>{{ item.totalHours }}</td>
+          <td>{{ item.totalPrice }} $</td>
         </tr>
       </tbody>
-      <button class="btn btn-success mt-2" (click)="getAllHouers()">
+      <button *ngIf="results.length " class="btn btn-success mt-2" (click)="getAllHouers()">
         getAllHouers
       </button>
-      <div class="mt-2 ">
+      <div class="mt-2" *ngIf="results.length ">
         <p>totalHoursInweek : {{ totalHoursInweek }}</p>
-        <p>totalHoursPrice : {{ totalHoursPrice }}</p>
+        <p>totalHoursPrice : {{ totalHoursPrice }} $</p>
       </div>
     </table>
   </div>

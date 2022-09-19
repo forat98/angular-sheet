@@ -1,11 +1,14 @@
 body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
     url(src\assets\images\home.jpg);
-    background-size: 100% 100%;
+  background-size: cover;
   color: white;
   background-repeat: no-repeat;
   font: 87.5%/1.5em "Open Sans", sans-serif;
   margin: 0;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 p {
@@ -81,8 +84,6 @@ after {
   background-size: cover;
   background-position: center;
   filter: brightness();
-  height: 100vh;
-  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -109,27 +110,10 @@ after {
   letter-spacing: 2px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.section-one {
-  background-size: cover;
-  background-position: center;
-  filter: brightness();
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .container {
   text-align: center;
   color: white;
+  display: contents !important;
 }
 
 h1 {
@@ -150,6 +134,7 @@ p {
   text-decoration: none;
   border: 2px white solid;
   padding: 10px 15px;
+  margin: 4px;
 }
 
 .home-button:hover,
@@ -179,4 +164,14 @@ p {
   font-size: 60px;
   font-family: cursive;
   letter-spacing: 7px;
+}
+
+form{
+  background: #94949569;
+    width: 50%;
+    height: 300px;
+    margin: auto;
+    padding: 29px;
+    border-radius: 27px;
+    border: 4px solid #9c4f07;
 }

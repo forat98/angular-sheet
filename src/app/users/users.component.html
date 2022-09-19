@@ -3,7 +3,7 @@
   <div class="container d-flex justify-content-center">
     <table
       class="table table-hover"
-      style="overflow: auto; background: white; width: 50%"
+      style="overflow: auto; background: white; width: 80%"
     >
       <thead>
         <tr>
@@ -15,7 +15,7 @@
         <tr *ngFor="let item of user">
           <td>{{ item.name }}</td>
           <td>
-            <button class="btn btn-info m-2" (click)="viweUser(item.id)">
+            <button class="btn btn-info m-2" (click)="viweUser(item.id,item.name)">
               view
             </button>
 

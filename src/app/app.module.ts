@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DBConfig, NgxIndexedDBModule } from 'ngx-indexed-db';
 import { CommonModule } from '@angular/common';
 import { UserDataComponent } from './users/user-data/user-data/user-data.component';
+import { AdminComponent } from './users/admin/admin.component';
 
 const dbConfig: DBConfig  = {
   name: 'MyDb',
@@ -54,6 +55,8 @@ const dbConfig: DBConfig  = {
     UsersComponent,
     RegisterComponent,
     UserDataComponent,
+    AdminComponent
+
    ],
   imports: [
     BrowserModule,
